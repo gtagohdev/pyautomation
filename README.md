@@ -43,4 +43,10 @@
     * try using other file name such as /home/user/otherfolder/otherfile.txt
  5. Try using other invalid file name or other file format to see the errors generated from the programs.
 
+### Sample screenshot of executions:  
+![Sample execution image](https://github.com/gtagohdev/pyautomation/blob/main/sample_execution.png)  
+
+### Sample output image:
+![Sample output image](https://github.com/gtagohdev/pyautomation/blob/main/sample_output.jpg)  
+
 
