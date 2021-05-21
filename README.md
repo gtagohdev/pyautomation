@@ -17,3 +17,29 @@
     * filter out non-interesting words and generate words list
     * Count words frequency and keep the counts in dictionary format
     * Call functions in 'wordcloud' module to process the data and generate word cloud image (based on file name provided by user) in the same working directory
+
+## Installations  
+1. Ensure that Python interpreter (3.9.x) had been installed locally
+2. Download all files from the repository to a local directory (e.g: d:\python_course)
+3. Use command prompt windows and change direcotry to the specified directory
+4. Install wordcoud python module by running the command:  
+    * pip install wordcloud  
+6. However the above command may encounter errors in Windows platform (with Python 3.9.x installed). If this is the case, just run the following command:  
+    * pip install wordcloud-1.8.1-cp39-cp39-win_amd64.whl
+8. Once 'wordcloud-1.8.1' and the relevant modules are installed properly, you can proceed to program execution.  
+
+## Executions
+1. Use command prompt in Windows or Ubuntu and change direcotry to the specified directory (e.g: d:\python_course or /home/user/python_course)
+2. To run wordcloud_basic.py in command line and check the print out on the screen and look out for output file (sample.jpg) and open it
+    * for Windows: wordcloud_basic.py
+    * for Ubuntu: ./workcloud_basic.py
+4. To run wordcloud_advance.py in command line and check the print out on the screen and look out for output file (xxxxx.jpg) and open it
+    * for Windows: wordcloud_advance.py and enter the file name (e.g: sample.txt which found in the same working directory) when prompted
+    * or for Windows: wordcloud_advance.py sample.txt
+    * try using other file name such as d:\temp\otherfile.txt
+    * for Ubuntu: ./wordcloud_advance and enter the file name (e.g: sample.txt which found in the same working directory) when prompted
+    * or for Ubuntu: ./wordcloud_advance sample.txt
+    * try using other file name such as /home/user/python_course/otherfile.txt
+ 5. Try using other invalid file name or other file format to see the errors generated from the programs.
+
+
