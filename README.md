@@ -49,4 +49,31 @@
 ### Sample output image:
 ![Sample output image](https://github.com/gtagohdev/pyautomation/blob/main/sample_output.jpg)  
 
+## Other Sample Programs for The Labs
+The last two main labs found in 'Using Python to Interact with the Operating System' are the hands on labs that require learner to write the scripts from scratch. There might be a bit tricky for novice learner as the instructions and questions were not structured properly. Pay more attentions on every detail and the patterns of the contents given in the files.
+1. findJane.sh  
+   This is part of Week 6 end lab to correct, validate and save applicable file names in output file (oldFiles.txt).  
+    * Create empty olfFiles.txt file in current working directory
+    * Grep a list of applicable file names only from the given file (list.txt)
+    * Correct each applicable file name by adding user home directory in prefix of file name.
+    * Validate file existence in the actual file system and save the applicable file name (full absolute path) to oldFiles.txt  
+ 
+2. changeJane.py  
+   This is also part of week 6 end lab to perform actual file renaming in file system based on the applicable file name given in the file (oldFiles.txt).
+    * Accept input file from command line (assume that oldFiles.txt to be supplied as command line parameter to the program)
+    * Read each line from the file and rename any occurence of 'jane' to 'jdoe' that found in the file name
+    * Perform the actual file renaming in the file system
+ 
+3. ticky_check.py  
+   This is the main programa for final project of the course.  
+    * Define search patterns with results grouping (# 1 - log type (INFO or ERROR), # 2 - error description, # 3 - user nameourse) 
+    * Read line by line from syslog.log (assume the file found in current working directory)
+    * Based on the search results, keep the error statistics (error desc & count) in dictionary variable
+    * Based on the search results, keep the user statistics (user name, count of INFO and count of ERROR) in dictionary variable
+    * Sort error statistics values in its variable
+    * Sort user statistics values in its variable
+    * Save error statistics to error_message.csv file using csv common functionality
+    * Save user statistics to user_statistics.csv file using csv DictWriter functionality     
+      
+  Then follow other instructions in the lab to convert csv files into html files for report page displaying via browser.
 
