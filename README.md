@@ -51,20 +51,20 @@
 
 ## Other Sample Programs for The Labs
 The last two main labs found in 'Using Python to Interact with the Operating System' are the hands on labs that require learner to write the scripts from scratch. There might be a bit tricky for novice learner as the instructions and questions were not structured properly. Pay more attentions on every detail and the patterns of the contents given in the files.
-1. findJane.sh  
+1. **findJane.sh**  
    This is part of Week 6 end lab to correct, validate and save applicable file names in output file (oldFiles.txt).  
     * Create empty olfFiles.txt file in current working directory
     * Grep a list of applicable file names only from the given file (list.txt)
     * Correct each applicable file name by adding user home directory in prefix of file name.
     * Validate file existence in the actual file system and save the applicable file name (full absolute path) to oldFiles.txt  
  
-2. changeJane.py  
+2. **changeJane.py**  
    This is also part of week 6 end lab to perform actual file renaming in file system based on the applicable file name given in the file (oldFiles.txt).
     * Accept input file from command line (assume that oldFiles.txt to be supplied as command line parameter to the program)
     * Read each line from the file and rename any occurence of 'jane' to 'jdoe' that found in the file name
     * Perform the actual file renaming in the file system
  
-3. ticky_check.py  
+3. **ticky_check.py**  
    This is the main programa for final project of the course.  
     * Define search patterns with results grouping (# 1 - log type (INFO or ERROR), # 2 - error description, # 3 - user nameourse) 
     * Read line by line from syslog.log (assume the file found in current working directory)
@@ -75,5 +75,22 @@ The last two main labs found in 'Using Python to Interact with the Operating Sys
     * Save error statistics to error_message.csv file using csv common functionality
     * Save user statistics to user_statistics.csv file using csv DictWriter functionality     
       
-  Then follow other instructions in the lab to convert csv files into html files for report page displaying via browser.
+  Then follow other instructions in the lab to convert csv files into html files for report page displaying via browser.    
+  
+## Sample Programs for Troubleshooting and Debugging Techniques Labs   
+1. **dailysync.py**   
+   A sample program (week-2 module review lab) utilizes rsync tool in Linux platform to perform delta backup recursively at directory level. Performance of the processes can be adjusted or fine-    tuned via parallel processing feature provided by multiprocessing module.
+    * This program only processes backup directories in relative to the default working directory (home) 
+    * Determine source and target root directory for backup
+    * Read first level subdirectory names based on the given root directory to backup from.
+    * Use multiprocessing Pool module functionality to perform delta copying on each subdirectory parallelly
+    * Use rsync command to backup delta at the given directory recursively  
 
+2. **start_date_report.py**   
+   A sample program (Week-4 module review lab) to demonstrate problem troubleshooting, performance fine-tuning and modification techniques. Rectifications and            improvements are mainly required in existing and new methods.
+    * Method get_start_date() - Rectify type conversion problem for values entered (from str to int)
+    * New method getsortedemployees() - To pre-process employees data (read csv rows into lists and order by date column) for subsequent use
+    * Method get_same_or_newer(start_date, employees) - Remove unnecessary processes. Search and filter out results to a final list based on date column 
+    * Method list_newer(start_date) - Remove unnecessary processes. Generate and print final employees list report based on the input date
+   
+   
