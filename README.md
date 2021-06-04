@@ -94,4 +94,55 @@ The last two main labs (week-6 and week-7) found in the coourse are the hands on
     * Method get_same_or_newer(start_date, employees) - Remove unnecessary processes. Search and filter out results to a final list based on date column 
     * Method list_newer(start_date) - Remove unnecessary processes. Generate and print final employees list report based on the input date
    
-   
+## Course-6: Automating Real-World Tasks with Python   
+1. **course-6\transform_images.py**   
+  Week-1 module lab is a program to read image files from a specific directory in relative to current working directory (user home), transform and save the images in the destinated directory. 
+    * Read all image files from a specific directory
+    * Convert to JPEG format; correct the rotation; resize to 128x128
+    * Save the image files (jpeg) to the destinated directory
+  
+2. **course-6\run_upload_feedback.py**  
+   Week-2 module lab (create and name the file as run.py as per the lab instruction) is a program to extract text contents from files; structure the data into json format and trigger existing feedback API service to upload the contents to the specific web site.
+    * Read all text files from a specific directory
+    * For each of the files, read the text line by line and generate the contents in dictionary format
+    * Convert data in dictionary into json format and trigger existing feedback API to upload the data into the web site 
+
+3. **course-6\cars.py**   
+   Week-3 module lab is an existing program that requires rectification and further customization in order to process car sales data; generate pdf report and deliver the report via email.
+    * Fix data type error
+    * Add a code block to generate a list of sales with car info (make, model and year)
+    * Add a code block to generate a dictionary of car_year and total sales of the car_year
+    * Sort the car info list in reverse order by sales and generate the summary of the top sales for the car
+    * Sort the car_year dictionary in reverse order by total sales and generate the summary of the top total sales for car_year
+    * Add code block to call existing reports function to generate pdf report
+    * Add code block to call existing emails function to fire email and attach the pdf report
+
+4. **course-6\reports.py**  
+   This is part of the functions created for week-4 module lab. It provides functions to generate pdf report. 
+
+5. **course-6\emails.py**  
+   This is part of the functions created for week-4 module lab. It provides functions to fire email with or without attachment via SMTP server.
+
+6. **course-6\changeImage.py**   
+  week-4 module lab - task 1
+
+7. **course-6\supplier_image_upload.py**   
+  week-4 module lab - task 2
+
+8. **course-6\run_upload_descriptions.py**  
+  week-4 module lab - task 3
+
+9. **course-6\report_email.py**  
+  week-4 module lab - task 4
+
+10. **course-6\health_check.py**  
+  week-4 module lab - task 5
+  
+  
+
+
+
+
+
+
+
