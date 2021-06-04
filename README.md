@@ -99,13 +99,13 @@ The last two main labs (week-6 and week-7) found in the coourse are the hands on
   Week-1 module lab is a program to read image files from a specific directory in relative to current working directory (user home), transform and save the images in the destinated directory. 
     * Read all image files from a specific directory
     * Convert to JPEG format; correct the rotation; resize to 128x128
-    * Save the image files (jpeg) to the destinated directory
+    * Save the image files (jpeg) to a destinated directory
   
 2. **course-6\run_upload_feedback.py**  
    Week-2 module lab (create and name the file as run.py as per the lab instruction) is a program to extract text contents from files; structure the data into json format and trigger existing feedback API service to upload the contents to the specific web site.
     * Read all text files from a specific directory
-    * For each of the files, read the text line by line and generate the contents in dictionary format
-    * Convert data in dictionary into json format and trigger existing feedback API to upload the data into the web site 
+    * For each of the files, read the text line by line and generate the feedback contents in dictionary format
+    * Trigger existing feedback API to upload the feedback contents in json format (converted from dictionary format) into a destinated web site 
 
 3. **course-6\cars.py**   
    Week-3 module lab is an existing program that requires rectification and further customization in order to process car sales data; generate pdf report and deliver the report via email.
@@ -118,28 +118,42 @@ The last two main labs (week-6 and week-7) found in the coourse are the hands on
     * Add code block to call existing emails function to fire email and attach the pdf report
 
 4. **course-6\reports.py**  
-   This is part of the functions created for week-4 module lab. It provides functions to generate pdf report. 
+   This is the supporting program created for week-4 module lab. It provides functions to generate pdf report. 
 
 5. **course-6\emails.py**  
-   This is part of the functions created for week-4 module lab. It provides functions to fire email with or without attachment via SMTP server.
+   This is the supporting program created for week-4 module lab. It provides functions to fire email with or without attachment via local simple SMTP server.
 
 6. **course-6\changeImage.py**   
-  week-4 module lab - task 1
-
+   Week-4 module lab - task 1 is a program to transform all image files from tiff to jpeg format in the the same specific directory.
+    * Read all image files from a specific directory in relative to current working directory (user home)
+    * Convert each image to jpeg format
+    * Resize jpeg image to 600x400 and save the jpeg file (same file name with jpeg extension) in the same directory as the original image file
+   
 7. **course-6\supplier_image_upload.py**   
-  week-4 module lab - task 2
+   Week-4 module lab - task 2 is a program to upload every jpeg file generated in a specific directory to a destinated web site via API service call.
+    * Read all jpeg image files from a specific directory in relative to current working directory (user home)
+    * Upload each of the files to a destinated web site via API service call with file attachment
 
 8. **course-6\run_upload_descriptions.py**  
-  week-4 module lab - task 3
-
+   Week-4 module lab - task 3 is a program to extract product data files from a specific directory and upload products information to a destinated web site for displaying.
+    * Read all text files from a specific directory in relative to current working directory (user home)
+    * For each of the files, read the text line by line and generate the products information (dictionary format) that include the respective jpeg image path
+    * Trigger existing fruits API to upload the products information as json format (converted from dictionary format) into a destinated web site 
+ 
 9. **course-6\report_email.py**  
-  week-4 module lab - task 4
+   Week-4 module lab - task 4 is a program to generate a report of products information in pdf format and deliver the report as attachment via email.
+    * Read and process products data from text files in relative to current working directory (user home)
+    * Prepare products information in the requested format
+    * Invoke function from reports.py module to generate pdf report in a specific directory
+    * Invoke function from emails.py module to delivery the pdf report as attachment via email 
 
 10. **course-6\health_check.py**  
-  week-4 module lab - task 5
-  
-  
-
+   Week-4 module lab - task 5 is a program to perform health checks on a system and fire alert to user via email whenever any of the unhealthy conditions is met.
+    * Retrieve memory information, validate and fire email alert only when memory free space is lower than 500MB
+    * Retrieve disk usage information, validate and fire email alert only when disk free space percent is lower than 20%
+    * Retrieve ip information from localhost and fire email alert only when locahost is not resolvable to default local IP 127.0.0.1
+    * Retrieve CPU usage information, validate and fire email alert only when CPU utilization exceeds 80% threshold
+    
 
 
 
