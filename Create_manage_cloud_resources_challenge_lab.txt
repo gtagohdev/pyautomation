@@ -1,0 +1,130 @@
+Create jumphost instance
+---------------------------
+1. Use GCP console to create new VM with following settings. Remain other info as default.
+
+Name the instance nucleus-jumphost.
+Use an f1-micro machine type.
+Use the default image type (Debian Linux) - Do not change the default value
+
+
+create GKE
+-------------
+** take note to create in specific zone (in case it's different from default) ** 
+1. gcloud container clusters create nucleus-cluster --zone us-east1-b 
+
+2. gcloud container clusters get-credentials nucleus-cluster --zone us-east1-b
+
+3. kubectl create deployment nucleus-hello-server --image=gcr.io/google-samples/hello-app:2.0
+
+4. kubectl expose deployment nucleus-hello-server --type=LoadBalancer --port 8080
+
+5. kubectl get service
+
+Wait and repeat the above command till you get the ip address for the service.
+HOSTIP = 34.75.190.218
+
+6. Test in browser http://34.75.190.218:8080
+
+
+Create HTTP LB
+---------------------
+1. Open cloud shell and check project region and zone and set the default values in cloud shell
+(My project was using region=us-east1 and zone=us-east1-b
+
+   gcloud compute project-info describe --project [PROJECT_ID]
+
+   gcloud config set compute/region us-east1
+   gcloud config set compute/zone us-east1-b
+
+
+2. Create startup.sh in the current working directory by running the following block contents.
+
+cat << EOF > startup.sh
+#! /bin/bash
+apt-get update
+apt-get install -y nginx
+service nginx start
+sed -i -- 's/nginx/Google Cloud Platform - '"\$HOSTNAME"'/' /var/www/html/index.nginx-debian.html
+EOF
+
+3. Create instance template (with startup scripts defined) for the default region
+
+   gcloud compute instance-templates create nucleus-instance-template \
+   --metadata-from-file startup-script=startup.sh
+
+
+2. Create target pools for the default region
+
+   gcloud compute target-pools create nucleus-pool
+
+3. Create instance group of two VMs in the default zone using instance template
+
+   gcloud compute instance-groups managed create nucleus-instancegroup \
+   --base-instance-name nginx \
+   --size=2 \
+   --template=nucleus-instance-template \
+   --target-pool nucleus-pool
+
+4. Create firewall rules for tcp access
+   gcloud compute firewall-rules create nucleus-fw-www \
+   --allow=tcp:80
+
+5. Create network LB to route traffic to the target pools
+   gcloud compute forwarding-rules create nucleus-lb \
+   --ports=80 \
+   --target-pool nucleus-pool
+
+Verification: gcloud compute forwarding-rules list
+Take note on the external IP for the LB: 34.73.169.30
+curl http://34.73.169.30
+
+#configure http LB
+6. Create http health check.
+
+   gcloud compute http-health-checks create nucleus-http-basic-check
+
+7. Enable http service and port at instance group level
+
+   gcloud compute instance-groups managed \
+   set-named-ports nucleus-instancegroup \
+   --named-ports http:80
+
+8. Create backend service to serve incoming http request
+ 
+   gcloud compute backend-services create nucleus-backend-service \
+   --protocol=HTTP \
+   --http-health-checks=nucleus-http-basic-check \
+   --global
+
+9. Associate backend service with the instance group of VMs.
+
+   gcloud compute backend-services add-backend nucleus-backend-service \
+   --instance-group=nucleus-instancegroup \
+   --instance-group-zone=us-east1-b \
+   --global
+
+10. Create traffic map info.
+
+    gcloud compute url-maps create nucleus-map-http \
+    --default-service nucleus-backend-service
+
+11. Create http proxy to route the traffic
+
+    gcloud compute target-http-proxies create nucleus-http-proxy \
+    --url-map nucleus-map-http
+
+12. Create external HTTP LB to serve external request
+
+    gcloud compute forwarding-rules create nucleus-http-rule \
+    --global \
+    --target-http-proxy=nucleus-http-proxy \
+    --ports=80
+
+Verification: gcloud compute forwarding-rules list
+Take note on the external IP for the LB = 34.117.135.246
+
+Wait for 30s or more for systems to complete all updates before any test or perform the lab assessment.
+
+14. Test via browser: http://34.117.135.246
+
+
