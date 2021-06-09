@@ -1,4 +1,5 @@
 # Google IT Automation with Python   
+The subject consists of 6 separate courses. Though all 6 courses were completed and certified, this repository site is only meant to share labs' results and references for those main and tricky labs that require manual planning, development, troubleshooting and testing.  
 ## Course-1: Crash Course on Python   
 These are just Python sample programs (two versions) written with the purpose of demonstrating on how to apply Python programming concepts learnt from the course. The main problem statements for the final project lab (Week-6) of the course are to generate Word Cloud from a text file using Python module 'wordcloud' and other dependent modules. In fact, Word Cloud can be easily resolved by fully utilizing the functionality provided in 'wordcloud' module alone. However that's not the intention of the programs, which are focusing on applying Python to solve the solution based on the scope of the learning course. Of course there are many other ways and variants to resolve the problems.
 1. **course-1\wordcloud_basic.py**  
