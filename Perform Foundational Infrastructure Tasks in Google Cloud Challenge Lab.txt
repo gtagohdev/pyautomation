@@ -1,0 +1,48 @@
+Create new bucket
+------------------
+1. Navigation Menu >> Cloud Storage 
+2. Add new bucket by using CREATE BUCKET option
+3. Give a unique name to the bucket (e.g: memories-bucket01-20210613)
+4. Change Location type to Region and Location to us-east1
+5. Create the bucket
+
+Create Pub/Sub Topic
+------------------------
+1. Navigation Menu >> Pub/Sub
+2. Add new Topic by using CREATE TOPIC option
+3. Enter topic id as memories-topic
+4. Create the topic
+
+
+Create Cloud Function to listen and respond to Create action in bucket
+-----------------------------------------------------------------------
+1. Navigation Menu >> Cloud Functions
+2. Add new function by using CREATE FUNCTION option
+3. Enter function name as memories-function, select us-east1 as Region, select Cloud Storage as Trigger type
+4. Select Finalize/Create as Event type
+5. Click on browse to select the bucket (e.g: memories-bucket01-20210613) you created as mentioned above.
+6. Check on Retry on failure flag and save the details.
+7. Click on Next to continue.
+8. Change Runtime to Node.js 10 and enter thumbnail in Entry point
+9. Replace the contents of index.js (copy the contents from the lab). And change the  REPLACE_WITH_YOUR_TOPIC_ID found in index.js with the actual topic name you created (memories-topic)
+10. Replace the contents of package.json (copy the contents from the lab)
+11. Click on DEPLOY option to deploy the function (wait till deployment completed) 
+
+
+Upload JPG or PNG image file to verify the setup
+-------------------------------------------------
+1. Navigation Menu >> Cloud Storage 
+2. Click on memories-bucket01-20210613 to view details of bucket
+3. Use UPLOAD FILES option to select an image file (jpg or png) to upload an image to the bucket (you can download and use the sample image from the lab)
+4. New image file (original_file_name.64x64_thumbnail.xxx) will be generated in the same bucket.
+5 And a relevant message of the image conversion is sent to the topic (memories-topic). 
+
+Remove permission for old account for cloud engineer
+-------------------------------------------------------
+1. Navigation Menu >> IAM & Admin
+2. Look for the second user id given in the lab.
+3. Click on the respective Edit member option (at the end of the row).
+4. In Edit permissions page, click on the trash icon to remove the role of the selected user.
+5. And save the page.
+
+
